@@ -80,13 +80,16 @@ python3 scripts/travel.py tools/call '{"name": "check_train", "arguments": {"ori
 
 ## 本地 MCP 服务
 
-如需本地模式运行，需要配套的 `api_fastmcp_server_v2.py`（含地址字典数据文件，不含在本仓库中）：
+本技能支持对接本地自建的 MCP Server。Server 端基于 [FastMCP](https://github.com/jlowin/fastmcp) 实现，用 `@mcp.tool()` 装饰器注册工具，通过 `streamable-http` 传输协议对外暴露，无需额外配置即可被本技能的客户端（`scripts/travel.py`）调用。
+
+启动后将 `TRAVEL_MCP_URL` 指向本地地址即可：
 
 ```bash
-python3 api_fastmcp_server_v2.py
-# 服务启动后设置：
+python3 api_fastmcp_server.py
 export TRAVEL_MCP_URL=http://127.0.0.1:7020/mcp
 ```
+
+> Server 代码及数据文件不含在本仓库中。
 
 ---
 
