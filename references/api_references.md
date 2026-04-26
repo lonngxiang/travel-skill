@@ -1,4 +1,4 @@
-# 天翼出行 MCP 工具参考
+# 出行 MCP 工具参考
 
 本文件提供所有工具的调用场景、关键规则与 bash 调用示例。
 
@@ -41,13 +41,13 @@
 | `depAirport` | list[str] | | 起飞机场简称，如 ["首都","虹桥"] |
 | `arrAirport` | list[str] | | 到达机场简称，如 ["白云","浦东"] |
 | `price` | list[str] | | 价格区间，如 ["300-600"] |
-| `appKey` | str | | "default"=118114出行，"rest"=疗休养 |
+| `appKey` | str | | "default"=默认出行，"rest"=疗休养 |
 
 ### 调用示例
 
 ```bash
 # 基础查询：北京→上海
-python3 scripts/tianyi_travel.py tools/call '{
+python3 scripts/travel.py tools/call '{
   "name": "check_flight",
   "arguments": {
     "ori_cityname": "北京",
@@ -57,7 +57,7 @@ python3 scripts/tianyi_travel.py tools/call '{
 }'
 
 # 带筛选：最低价机票，早上起飞，国航或东航
-python3 scripts/tianyi_travel.py tools/call '{
+python3 scripts/travel.py tools/call '{
   "name": "check_flight",
   "arguments": {
     "ori_cityname": "广州",
@@ -72,7 +72,7 @@ python3 scripts/tianyi_travel.py tools/call '{
 }'
 
 # 价格最高，晚上到达
-python3 scripts/tianyi_travel.py tools/call '{
+python3 scripts/travel.py tools/call '{
   "name": "check_flight",
   "arguments": {
     "ori_cityname": "上海",
@@ -97,7 +97,7 @@ python3 scripts/tianyi_travel.py tools/call '{
 
 ### 订票链接
 ```
-https://ai.118114.cn/h5/#/flight?fromStation={ai_fromStation}&toStation={ai_toStation}&date={ai_flightDate}
+https://{BOOKING_HOST}/h5/#/flight?fromStation={ai_fromStation}&toStation={ai_toStation}&date={ai_flightDate}
 ```
 
 ---
@@ -143,7 +143,7 @@ https://ai.118114.cn/h5/#/flight?fromStation={ai_fromStation}&toStation={ai_toSt
 
 ```bash
 # 基础查询：北京→上海高铁
-python3 scripts/tianyi_travel.py tools/call '{
+python3 scripts/travel.py tools/call '{
   "name": "check_train",
   "arguments": {
     "ori_cityname": "北京",
@@ -154,7 +154,7 @@ python3 scripts/tianyi_travel.py tools/call '{
 }'
 
 # 带筛选：最低价，有一等座
-python3 scripts/tianyi_travel.py tools/call '{
+python3 scripts/travel.py tools/call '{
   "name": "check_train",
   "arguments": {
     "ori_cityname": "北京",
@@ -168,7 +168,7 @@ python3 scripts/tianyi_travel.py tools/call '{
 }'
 
 # 查上午出发的硬卧票
-python3 scripts/tianyi_travel.py tools/call '{
+python3 scripts/travel.py tools/call '{
   "name": "check_train",
   "arguments": {
     "ori_cityname": "上海",
@@ -192,7 +192,7 @@ python3 scripts/tianyi_travel.py tools/call '{
 
 ### 订票链接
 ```
-https://ai.118114.cn/h5/#/train?fromStation={ai_fromStation}&toStation={ai_toStation}&date={ai_trainDate}
+https://{BOOKING_HOST}/h5/#/train?fromStation={ai_fromStation}&toStation={ai_toStation}&date={ai_trainDate}
 ```
 
 ---
@@ -213,13 +213,13 @@ https://ai.118114.cn/h5/#/train?fromStation={ai_fromStation}&toStation={ai_toSta
 | `keyword` | str | | 区域/地标，如"三里屯"、"浦东" |
 | `pricein` | str | | 最低价（元），默认200 |
 | `priceout` | str | | 最高价（元），默认1000 |
-| `appKey` | str | | "default"=118114出行，"rest"=疗休养 |
+| `appKey` | str | | "default"=默认出行，"rest"=疗休养 |
 
 ### 调用示例
 
 ```bash
 # 基础查询：北京酒店
-python3 scripts/tianyi_travel.py tools/call '{
+python3 scripts/travel.py tools/call '{
   "name": "check_hotel",
   "arguments": {
     "cityname": "北京",
@@ -229,7 +229,7 @@ python3 scripts/tianyi_travel.py tools/call '{
 }'
 
 # 带筛选：三亚五星酒店，500-2000元，三亚湾附近
-python3 scripts/tianyi_travel.py tools/call '{
+python3 scripts/travel.py tools/call '{
   "name": "check_hotel",
   "arguments": {
     "cityname": "三亚",
@@ -243,7 +243,7 @@ python3 scripts/tianyi_travel.py tools/call '{
 }'
 
 # 四五星酒店，价格约500元
-python3 scripts/tianyi_travel.py tools/call '{
+python3 scripts/travel.py tools/call '{
   "name": "check_hotel",
   "arguments": {
     "cityname": "上海",
@@ -269,7 +269,7 @@ python3 scripts/tianyi_travel.py tools/call '{
 
 ### 订票链接
 ```
-https://ai.118114.cn/h5/#/hotel?cityId={ai_cityId}&checkIn={ai_datein}&checkOut={ai_dateout}
+https://{BOOKING_HOST}/h5/#/hotel?cityId={ai_cityId}&checkIn={ai_datein}&checkOut={ai_dateout}
 ```
 
 ---
@@ -292,7 +292,7 @@ https://ai.118114.cn/h5/#/hotel?cityId={ai_cityId}&checkIn={ai_datein}&checkOut=
 
 ```bash
 # 查询 CA1521 今天的动态
-python3 scripts/tianyi_travel.py tools/call '{
+python3 scripts/travel.py tools/call '{
   "name": "check_flight_info",
   "arguments": {
     "flightNo": "CA1521",
@@ -301,7 +301,7 @@ python3 scripts/tianyi_travel.py tools/call '{
 }'
 
 # 指定机场三字码提高精度
-python3 scripts/tianyi_travel.py tools/call '{
+python3 scripts/travel.py tools/call '{
   "name": "check_flight_info",
   "arguments": {
     "flightNo": "MU5100",
@@ -335,7 +335,7 @@ python3 scripts/tianyi_travel.py tools/call '{
 ### 调用示例
 
 ```bash
-python3 scripts/tianyi_travel.py tools/call '{
+python3 scripts/travel.py tools/call '{
   "name": "check_pending_order",
   "arguments": {
     "phone": "13812345678"
