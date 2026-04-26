@@ -1,5 +1,5 @@
 {
-  "name": "travel-mcp",
+  "name": "travel-skill",
   "version": "v1.0.0",
   "baseUrl": "http://<your-mcp-server-host>:<port>/mcp"
 }

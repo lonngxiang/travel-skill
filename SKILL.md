@@ -1,7 +1,7 @@
 ---
-name: travel-mcp
+name: travel-skill
 description: "智能出行助手，基于出行 MCP 服务，支持机票、火车票、酒店实时查询，航班动态追踪，订单管理，景点评价，天气查询及行程推荐等功能。适合个人出行、商务出差、团队旅行等场景。"
-homepage: https://github.com/lonngxiang/travel-mcp
+homepage: https://github.com/lonngxiang/travel-skill
 metadata:
   version: v1.0.0
   agent:
@@ -86,7 +86,7 @@ metadata:
 
 **调用命令模板**（在技能目录下执行）：
 ```bash
-cd /path/to/travel-mcp
+cd /path/to/travel-skill
 python3 scripts/travel.py tools/call '{"name": "<工具名>", "arguments": {<参数>}}'
 ```
 

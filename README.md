@@ -30,8 +30,8 @@
 ### 1. 克隆技能
 
 ```bash
-git clone https://github.com/lonngxiang/travel-mcp.git
-cd travel-mcp
+git clone https://github.com/lonngxiang/travel-skill.git
+cd travel-skill
 ```
 
 ### 2. 配置服务地址（二选一）
@@ -96,7 +96,7 @@ export TRAVEL_MCP_URL=http://127.0.0.1:7020/mcp
 ## 目录结构
 
 ```
-travel-mcp/
+travel-skill/
 ├── SKILL.md              # 技能文档（含 openclaw/hermes 元数据）
 ├── config.example.json   # 配置模板（复制为 config.json 并填写 baseUrl）
 ├── .env.example          # 环境变量模板
